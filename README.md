@@ -22,7 +22,8 @@ description: A one-sentence summary of the note.
 
 Only the boolean `true` opts a note in. `content/index.md` is the home page: your name and the body of `content/about.md`
 appear on the left, and exported posts appear on the right, newest first. Edit
-`content/about.md` to update the bio. Set each post’s `published` date and a
+`content/about.md` to update the bio; its `orcid`, `scholar`, and `github`
+frontmatter fields set the profile icon links beneath your name. Set each post’s `published` date and a
 one-sentence `description` in its frontmatter; these appear beside its title.
 `learning-what-to-prove.md` is the first included essay. The home page has an RSS link beside the theme toggle at the top right.
 Note pages retain their reading layout and theme toggle, without search or
