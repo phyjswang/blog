@@ -1,0 +1,327 @@
+@use "./base.scss";
+@use "./fonts.scss";
+
+body {
+  --bodyFont: "et-book", Palatino, Georgia, serif;
+  --headerFont: "Cabin", "Gill Sans", sans-serif;
+  --codeFont: "SFMono-Regular", Consolas, monospace;
+  font-size: 20px;
+}
+
+.page {
+  max-width: 1120px;
+  padding: 0 5vw;
+
+  > #quartz-body {
+    display: block;
+    padding: 0;
+
+    > .sidebar {
+      display: none;
+    }
+    .page-header {
+      margin-top: 2rem;
+    }
+    .center {
+      min-width: 0;
+    }
+  }
+}
+
+header {
+  min-height: 2rem;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  font-family: var(--headerFont);
+
+  .page-title {
+    flex: 1;
+    font-size: 1.3rem;
+  }
+}
+
+.article-title {
+  font-weight: 400;
+  font-size: 2.6rem;
+}
+.content-meta,
+footer {
+  font-family: var(--headerFont);
+  font-size: 0.85rem;
+}
+
+article {
+  display: flow-root;
+  counter-reset: sidenote-counter;
+  line-height: 1.5;
+
+  p,
+  li {
+    line-height: inherit;
+  }
+
+  > * {
+    width: 55%;
+    box-sizing: border-box;
+  }
+  > h2,
+  > h3 {
+    margin-top: 2rem;
+    font-weight: 400;
+  }
+  > p {
+    margin: 1.2rem 0;
+  }
+  a,
+  a.internal {
+    font-weight: inherit;
+    background: none;
+    text-decoration: underline;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  pre {
+    font-size: 0.8rem;
+  }
+  .newthought {
+    font-variant: small-caps;
+    font-size: 1.2em;
+  }
+  .tufte-italic-opener {
+    font-style: italic;
+  }
+
+  .sidenote,
+  .marginnote {
+    float: right;
+    clear: right;
+    margin-right: -80%;
+    width: 65%;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    position: relative;
+    overflow-wrap: anywhere;
+  }
+
+  .sidenote-number {
+    counter-increment: sidenote-counter;
+  }
+  .sidenote-number::after,
+  .sidenote::before {
+    content: counter(sidenote-counter);
+    font-size: 0.7em;
+    position: relative;
+    vertical-align: super;
+    line-height: 0;
+  }
+  .sidenote::before {
+    margin-right: 0.4em;
+  }
+  .sidenote-number[data-note-label]::after,
+  .sidenote[data-note-label]::before {
+    content: attr(data-note-label);
+  }
+  label.margin-toggle:not(.sidenote-number),
+  input.margin-toggle {
+    display: none;
+  }
+  .tufte-p,
+  .tufte-div,
+  .tufte-blockquote,
+  .tufte-figure,
+  .tufte-figcaption,
+  .tufte-pre,
+  .tufte-ul,
+  .tufte-ol,
+  .tufte-li,
+  .tufte-table,
+  .tufte-tr {
+    display: block;
+  }
+  .tufte-p + .tufte-p {
+    margin-top: 0.6rem;
+  }
+  .sidenote > .tufte-p:first-child {
+    display: inline;
+  }
+  .tufte-li {
+    display: list-item;
+    margin-left: 1.2em;
+  }
+  .tufte-ol {
+    list-style: decimal;
+  }
+  .tufte-pre {
+    white-space: pre-wrap;
+  }
+  .tufte-figcaption {
+    font-style: italic;
+  }
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 18px;
+  }
+  .page {
+    padding: 0 6vw;
+  }
+  header {
+    margin-bottom: 2.5rem;
+  }
+  .article-title {
+    font-size: 2rem;
+  }
+  article {
+    > * {
+      width: 100%;
+    }
+    .sidenote,
+    .marginnote {
+      display: none;
+    }
+    label.margin-toggle {
+      display: inline !important;
+      cursor: pointer;
+      padding: 0 0.2em;
+    }
+    // Keep the native checkbox keyboard-accessible while visually hiding it.
+    input.margin-toggle {
+      display: inline;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      clip-path: inset(50%);
+      overflow: hidden;
+    }
+    label.margin-toggle:has(+ input:focus-visible) {
+      outline: 2px solid var(--secondary);
+    }
+    .margin-toggle:checked + .sidenote,
+    .margin-toggle:checked + .marginnote {
+      display: block;
+      float: none;
+      clear: both;
+      width: auto;
+      margin: 1rem 0 1rem 1rem;
+      padding-left: 1rem;
+      border-left: 1px solid var(--lightgray);
+    }
+  }
+}
+
+body[data-slug="index"] {
+  header {
+    justify-content: flex-end;
+  }
+  .center > article {
+    display: none;
+  }
+}
+
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  color: var(--darkgray);
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.home-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  padding-bottom: 5rem;
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+  h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  p {
+    line-height: 1.5;
+  }
+}
+
+.home-about {
+  h2 {
+    margin-top: 2.5rem;
+  }
+  .home-bio > :first-child {
+    margin-top: 1rem;
+  }
+}
+
+.home-posts {
+  > h2 {
+    margin-bottom: 2.5rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li + li {
+    margin-top: 2.5rem;
+  }
+  time {
+    font: 0.85rem var(--headerFont);
+    color: var(--darkgray);
+    opacity: 0.65;
+  }
+  h3 {
+    margin-top: 0.45rem;
+    font: 1.5rem/1.3 var(--bodyFont);
+  }
+  a.internal {
+    padding: 0;
+    background: none;
+    font-weight: 400;
+    line-height: inherit;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  p {
+    margin: 0.6rem 0 0;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-columns {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .home-columns h1 {
+    font-size: 2rem;
+  }
+  .home-about h2 {
+    margin-top: 2rem;
+  }
+  .home-posts > h2 {
+    margin-bottom: 1.5rem;
+  }
+}
