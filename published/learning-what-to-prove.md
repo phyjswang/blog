@@ -2,7 +2,7 @@
 title: Learning What to Prove
 publish: true
 published: 2026-11-15
-description: It always has been more about what and why to do, than how to do.
+description: It has always been more about what and why to do, than how to do.
 ---
 
 I recently came across a single sentence from Emil Artin[^1], spoken at Princeton in 1946:
@@ -31,7 +31,7 @@ We have already watched a version of this unfold in software engineering. Over t
 There are, however, structural differences between code and proof. Software is forgiving of approximation. A program that is ninety percent correct can still run, return partial outputs, and guide its author toward a fix. Deductive truth has no such gradient. A proof that is ninety-nine percent complete, resting on a single unproven lemma[^4], may still be attempting to establish a falsehood. Furthermore, in software, the specification usually comes from the outside: we know what tool we want to build before we begin. In frontier mathematics and theoretical physics, the specification is hidden. Discovering what is both true and worth stating is the entire struggle.
 
 > [!sidenote] 4
-> Or just a sign error, as occurring in OpenAI's proof.
+> Or just a sign error, as occurred in OpenAI's proof.
 
 Curiously, once that specification is found, mathematics enjoys one advantage that software does not. In vibe coding, a human still has to worry about subtle bugs lurking in generated code. In formalized mathematics, a kernel like Lean acts as an infallible judge. Once the right theorem is stated and the right definitions are in place, one can let a machine fill in the tactical proofs without ever reading them, confident that the foundation holds.
 
