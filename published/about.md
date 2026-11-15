@@ -6,4 +6,4 @@ scholar: https://scholar.google.com/citations?user=UX4ShIYAAAAJ&hl=en
 github: https://github.com/phyjswang
 ---
 
-A theoretist transitioning to Quantum × AI.
+A theorist transitioning to Quantum × AI.
