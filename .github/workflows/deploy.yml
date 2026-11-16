@@ -32,6 +32,7 @@ jobs:
       - name: Build
         env:
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
+          GOATCOUNTER_SITE_ID: ${{ vars.GOATCOUNTER_SITE_ID }}
         run: |
           export QUARTZ_BASE_URL="${PAGES_URL#https://}"
           npx quartz build -d published

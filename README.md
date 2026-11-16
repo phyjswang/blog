@@ -142,10 +142,30 @@ npm run build
 
 Fonts are served locally; licenses are in `quartz/static/fonts/`. KaTeX's
 stylesheet and copy support use the CDN configured by Quartz's LaTeX plugin.
-Analytics and hover previews are disabled.
+Hover previews are disabled.
 
 The inherited Quartz 4 dependency tree still reports eight npm audit advisories
 (four low, two moderate, two high) after compatible fixes. The high-severity
 findings affect Sharp and the TOML parser. Resolving the remaining reports
 requires dependency changes beyond the upstream version ranges. Sharp and the
 TOML parser run at build time; the deployed site is static and has no Node server.
+
+## Private analytics
+
+Sign into <https://phyjswang.goatcounter.com> to view the blog's traffic
+statistics. The published build uses the GitHub Actions repository variable
+`GOATCOUNTER_SITE_ID=phyjswang`. No password or API token is needed in the blog.
+Without this variable, analytics stays disabled. Local builds and previews
+also leave analytics disabled unless you explicitly set the environment variable.
+
+In GoatCounter settings, set **Dashboard viewable by** to **Only logged in
+users**, and leave **Allow adding visitor counts on your website** unchecked.
+Keep **Data retention in days** at `0` to retain history for yearly comparisons.
+The blog does not display statistics. Sign into your GoatCounter
+dashboard to select date ranges and view traffic trends. These are visits under
+[GoatCounter's counting rules](https://www.goatcounter.com/help/sessions), not
+an exact count of distinct people over a month or year.
+
+To exclude your own visits to the published site, open
+<https://phyjswang.github.io/blog/#toggle-goatcounter>, reload if needed, and
+confirm the exclusion. This preference applies to that browser.

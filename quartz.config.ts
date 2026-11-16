@@ -12,7 +12,9 @@ const config: QuartzConfig = {
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: false,
-    analytics: null,
+    analytics: process.env.GOATCOUNTER_SITE_ID
+      ? { provider: "goatcounter", websiteId: process.env.GOATCOUNTER_SITE_ID }
+      : null,
     locale: "en-US",
     baseUrl: process.env.QUARTZ_BASE_URL ?? "phyjswang.github.io/blog",
     ignorePatterns: ["private", "templates", ".obsidian"],
