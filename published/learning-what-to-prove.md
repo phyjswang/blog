@@ -2,7 +2,7 @@
 title: Learning What to Prove
 publish: true
 published: 2026-11-15
-description: It has always been more about what and why to do, than how to do.
+description: "Ultimately, it comes down to taste."
 ---
 
 I recently came across a single sentence from Emil Artin[^1], spoken at Princeton in 1946:
